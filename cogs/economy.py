@@ -1,6 +1,4 @@
-import discord
 import sqlite3
-import random
 from discord.ext import commands
 
 class Economy(commands.Cog):

@@ -1,0 +1,9 @@
+discord==2.0.0
+discord.py==2.0.1
+python-dotenv==0.21.0
+animec==0.4.2
+requests==2.27.1
+giphy-client==1.0.0
+googletrans==3.1.0a0
+wikipedia==1.4.0
+akinator==1.0.3
