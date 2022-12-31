@@ -7,6 +7,7 @@ import wikipedia as  wp
 import giphy_client
 from giphy_client.rest import ApiException
 import random
+import wolframalpha
 
 def wiki_summary(arg):
     definition = wp.summary(arg, sentences=3,auto_suggest=True, redirect=True)
@@ -70,6 +71,15 @@ class Api(commands.Cog):
         embed.set_footer(icon_url=ctx.author.avatar_url, text=f"requested by {ctx.author.name}")
         await ctx.send(embed=embed)
 
+    @commands.command(aliases=["Q"])
+    async def q(self, ctx, *,msg):
+        question = msg
+        app_id = '8UKEXP-5V4PL4QYQ7'
+        client = wolframalpha.Client(app_id)
+        res = client.query(question)
+        answer = next(res.results).text
+
+        await ctx.send(answer)
 
 async def setup(client):
     await client.add_cog(Api(client))

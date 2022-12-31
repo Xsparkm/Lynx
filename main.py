@@ -6,7 +6,7 @@ import asyncio
 import os
 from os import environ
 from dotenv import load_dotenv
-
+import wolframalpha
 import sqlite3
 from cogs.economy import Economy
 import random
@@ -29,10 +29,9 @@ async def on_ready():
   except Exception as e:
     print(e)
 
-@client.tree.command(name="ping")
-async def ping(interaction: discord.Interaction):
-  await interaction.response.send_message(f"yo")
+  
 
+  
 @client.command()
 async def ping(ctx) :
     await ctx.send(f"🏓 Pong with {str(round(client.latency, 2))}")
@@ -46,7 +45,7 @@ async def help(ctx):
     inline=False)
     em.add_field(name='Games', value='akinator, slot, coinflip, guess',
     inline=False)
-    em.add_field(name='Economy', value='gamble, work, balance, depsit, withdraw',
+    em.add_field(name='Economy', value='gamble, work, balance, deposit, withdraw',
     inline=False)
     em.add_field(name='Utilities', value='wikipedia, translate, topic, gif ')
 
@@ -216,7 +215,7 @@ async def deposit(ctx, amount:int):
     if wallet< amount:
         return await ctx.send("You don't have enought money too deposit")    
 
-    else:
+    else: 
         cursor.execute('UPDATE main SET bank = ? WHERE user_id = ?', (bank+amount , ctx.author.id))   
         cursor.execute('UPDATE main SET wallet = ? WHERE user_id = ?', (wallet-amount , ctx.author.id))   
 
