@@ -42,6 +42,14 @@ class Anime(commands.Cog):
         char = animec.Charsearch(charecter)
         await ctx.send(char.image_url)
 
+    @commands.command()
+    async def waifu(self,ctx):
+        response = requests.get("https://api.waifu.pics/sfw/waifu")
+        image = response.json()
+        em = discord.Embed(color=discord.Colour.blue())
+        em.set_image(url =image['url'])
+        await ctx.send(embed=em)
+
 
 async def setup(client):
     await client.add_cog(Anime(client))

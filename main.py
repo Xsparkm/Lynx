@@ -31,7 +31,11 @@ async def on_ready():
 
   
 
-  
+@client.tree.command(description='says the owner name')
+async def owner(interaction: discord.Interaction):
+    await interaction.response.send_message("sparkm")
+
+
 @client.command()
 async def ping(ctx) :
     await ctx.send(f"🏓 Pong with {str(round(client.latency, 2))}")
@@ -303,7 +307,7 @@ async def unload(ctx, extension):
 	await ctx.send(f'{extension} has unloaded')
 
 async def load_extensions():
-    for filename in os.listdir("./cogs"):
+    for filename in os.listdir("Lynx/cogs"):
         if filename.endswith(".py"):
             # cut off the .py from the file name
             await client.load_extension(f"cogs.{filename[:-3]}")

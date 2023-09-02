@@ -13,7 +13,7 @@ def wiki_summary(arg):
     definition = wp.summary(arg, sentences=3,auto_suggest=True, redirect=True)
     return definition
 
-f = open("assets/topic.txt", "r")
+f = open("Lynx/assets/topic.txt", "r")
 topics = f.readlines()
 
 
